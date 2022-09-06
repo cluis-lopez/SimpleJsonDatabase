@@ -1,3 +1,5 @@
+##SimpleJsonDatabase
+
 Extremely simple database program. Each "database" stores single type of Java objects serialized as Json. Each database stores these objects in a single file.
 
 - UserDatabase & GroupDatabase are designed to store small objects with high number of read and few modifications. Each modification, requires the re-write of the entire datafile
@@ -6,12 +8,12 @@ Extremely simple database program. Each "database" stores single type of Java ob
 
 Access to the databses is made through a REST API using HTTP POST requests using the URI
 
-<host>:port/<database>/<operation>
+> {host}:{port}/{database}/{operation}
 
-And enclosing parameters in the request body using Json format.
+Enclose parameters in the request body using Json format.
 
 Curl examples:
 
-# curl --header "Content-Type: application/json" -X POST http://localhost:8081/UserDatabase/findByName -d "carlos"
+> curl --header "Content-Type: application/json" -X POST http://localhost:8081/UserDatabase/findByName -d "carlos"
 
-# curl --header "Content-Type: application/json" -X POST http://localhost:8081/MessageDatabase/getChatByIdNumber -d'{"id":3,"number":5}'
+> curl --header "Content-Type: application/json" -X POST http://localhost:8081/MessageDatabase/getChatByIdNumber -d'{"id":3,"number":5}'
