@@ -130,7 +130,8 @@ public class DataserverAPI implements Runnable {
 									+ "Content-length: " + payload.length() + newLine + newLine + payload;
 						} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 							e.printStackTrace();
-							System.out.println(e.getMessage());
+							System.err.println(e.getMessage());
+							System.err.println(e.getCause());
 						}
 					}
 				} else {

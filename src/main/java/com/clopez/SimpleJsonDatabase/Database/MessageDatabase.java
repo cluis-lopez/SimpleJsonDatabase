@@ -127,6 +127,8 @@ public class MessageDatabase {
 		try {
 			int id = gson.fromJson(s, Integer.class);
 			List<Message> lm =  mapById.get(id);
+			if (lm == null) //If the id contains no associated messages return an empty list
+				lm = new ArrayList<>();
 			JsonArray ja = new JsonArray();
 			for (Message m : lm)
 				ja.add(gson.toJson(m));
@@ -146,13 +148,18 @@ public class MessageDatabase {
 			int id = pars.get("id").getAsInt();
 			int number = pars.get("number").getAsInt();
 			List<Message> lm =  mapById.get(id);
+			if (lm == null)
+				lm = new ArrayList<>();
 			int min = (number >= lm.size()? 0 : lm.size()-number);
 			JsonArray ja = new JsonArray();
-			for (int i = lm.size()-1; i < min; i--)
-				ja.add(gson.toJson(lm.get(i)));
+			int index = lm.size()-1;
+			while (index >= min) {
+				ja.add(gson.toJson(lm.get(index)));
+				index--;
+			}
 			jo.add("messages", ja);
 		} catch (JsonSyntaxException e) {
-			
+			jo.addProperty("code", "Invalid argument");
 		}
 		return jo;
 	}

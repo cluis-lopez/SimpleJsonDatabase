@@ -116,7 +116,7 @@ public class UserDatabase extends SimpleJsonDatabase<User> {
     	return u;
     }
     
-    public JsonObject findUserByWildCar(String jsonWc) {
+    public JsonObject findUserByWildChar(String jsonWc) {
     	JsonObject jo = new JsonObject();
     	JsonArray ja = new JsonArray();
     	try {
