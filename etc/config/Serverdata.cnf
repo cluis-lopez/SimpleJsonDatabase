@@ -1,0 +1,7 @@
+logFile = etc/logs/Serverdata.log
+dataPath = etc/data
+dataPort = 8081
+dataBases = User, Group, Message
+maxMessageFiles = 50
+maxMessagesPerFile = 500
+messageFilePrefix = messages_
