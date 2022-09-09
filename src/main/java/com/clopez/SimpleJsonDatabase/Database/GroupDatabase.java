@@ -182,7 +182,7 @@ public class GroupDatabase extends SimpleJsonDatabase<Group>{
             if (g.getName().equals(name)) {
             	jo.addProperty("code", "OK");
             	JsonElement je = gson.toJsonTree(g);
-            	jo.add("user", je);
+            	jo.add("group", je);
             	break;
             }
         }

@@ -39,6 +39,16 @@ public class UserDatabase extends SimpleJsonDatabase<User> {
 		return jo;
 	}
 	
+	public JsonObject saveDatabase (String kk) { //Dumb String parameter to follow invocation standards
+		JsonObject jo = new JsonObject();
+		if (saveDatabase())
+			jo.addProperty("code", "OK");
+		else
+			jo.addProperty("code", "Failure when saving database");
+		
+		return jo;
+	}
+	
 	
     public JsonObject createUser(String s) {
     	JsonObject jo = new JsonObject();

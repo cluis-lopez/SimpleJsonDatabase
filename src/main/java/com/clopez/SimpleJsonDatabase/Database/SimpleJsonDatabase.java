@@ -51,7 +51,7 @@ public abstract class SimpleJsonDatabase<T> {
 	/**
 	 * 
 	 */
-	public void saveDatabase() {
+	public boolean saveDatabase() {
 		try {
 			File file = new File(datafile);
 			file.createNewFile();
@@ -59,10 +59,12 @@ public abstract class SimpleJsonDatabase<T> {
 			gson.toJson(data, fw);
 			fw.flush();
 			fw.close();
+			return true;
 		} catch (IOException e) {
 			System.err.println("Warning: problmas al escribir en el fichero de datos " + datafile);
 			log.log(Level.SEVERE, "Failure writing datafile " + datafile);
 			log.log(Level.SEVERE, Arrays.toString(e.getStackTrace()));
+			return false;
 		}
 	}
 
