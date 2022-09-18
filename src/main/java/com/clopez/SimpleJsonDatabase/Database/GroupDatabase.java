@@ -107,11 +107,12 @@ public class GroupDatabase extends SimpleJsonDatabase<Group> {
 			saveDatabase();
 			janswer.addProperty("code", "OK");
 		} catch (JsonSyntaxException e) {
-			log.log(Level.INFO, "Invalid parameter for addMember");
-			jo.addProperty("code", "Inavlid parameter for addMembet");
+			log.log(Level.INFO, "Invalid parameter(s) for addMember");
+			log.log(Level.INFO, "Received " + jo);
+			janswer.addProperty("code", "Inavlid parameter for addMembet");
 		} catch (IllegalArgumentException e) {
 			log.log(Level.INFO, "Invalid username for this group");
-			jo.addProperty("code", "Invalid username for this group");
+			janswer.addProperty("code", "Invalid username for this group");
 		}
 		return janswer;
 	}
@@ -139,10 +140,10 @@ public class GroupDatabase extends SimpleJsonDatabase<Group> {
 			janswer.addProperty("code", "OK");
 		} catch (JsonSyntaxException e) {
 			log.log(Level.INFO, "Invalid parameter for addMember");
-			jo.addProperty("code", "Inavlid parameter for addMembet");
+			janswer.addProperty("code", "Inavlid parameter for addMembet");
 		} catch (IllegalArgumentException e) {
 			log.log(Level.INFO, "Invalid user name for this group");
-			jo.addProperty("code", "Invalid user name for this group");
+			janswer.addProperty("code", "Invalid user name for this group");
 		}
 		return janswer;
 	}
