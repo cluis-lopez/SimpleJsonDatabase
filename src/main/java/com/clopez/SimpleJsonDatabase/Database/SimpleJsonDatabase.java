@@ -84,6 +84,15 @@ public abstract class SimpleJsonDatabase<T> {
 
 	}
 	
+	protected void updateItem (String id, T t) {
+		if (findById(id) == null)
+			throw new IllegalArgumentException("No se puede actualizar un elemento que no existe");
+		else {
+			data.put(id, t);
+			saveDatabase();
+		}
+	}
+	
 	protected void deleteItem(String id) throws IllegalArgumentException {
 		if (!data.containsKey(id)) // Invalid user
 			throw new IllegalArgumentException("El elemento no existe");

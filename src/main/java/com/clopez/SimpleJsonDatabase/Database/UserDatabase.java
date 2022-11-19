@@ -78,16 +78,16 @@ public class UserDatabase extends SimpleJsonDatabase<User> {
     		User uNew = gson.fromJson(s, User.class);
     		User uOld = findById(uNew.getId());
     		if (uOld != null) { // The user already exists
-    			createItem(uOld.getId(), uNew);
+    			updateItem(uOld.getId(), uNew);
     			jo.addProperty("code", "OK");
     			log.log(Level.INFO, "Successfully updated user " + uNew.getName());
     		}
     	} catch (JsonSyntaxException e) {
-    		log.log(Level.INFO, "Invalid parameter for updateUser");
-    		jo.addProperty("code", "Invalid parameter for updateUser");
+    		log.log(Level.INFO, "Invalid parameter for updateUser " + e.getMessage());
+    		jo.addProperty("code", "Invalid parameter for updateUser " + e.getMessage());
     	} catch (IllegalArgumentException e) {
-    		log.log(Level.INFO, "Duplicated User Id");
-    		jo.addProperty("code", "Invalid parameter for updateUser");
+    		log.log(Level.INFO, "Duplicated User Id " + e.getMessage());
+    		jo.addProperty("code", "Invalid parameter for updateUser " + e.getMessage());
     	}
     	return jo;
     }
