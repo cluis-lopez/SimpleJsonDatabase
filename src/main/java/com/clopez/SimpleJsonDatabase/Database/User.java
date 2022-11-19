@@ -35,7 +35,7 @@ public class User {
         this.isConnected = false;
         this.updates = 0;
     }
-
+    
     public String getId(){
         return this.id;
     }
